@@ -191,13 +191,16 @@ optional<pair<string_view, SourceLocation>> Parser::parseSrcComment(
 	langutil::SourceLocation const& _commentLocation
 )
 {
+	// filter out debug info that may appear after location and cause segfaults
+	string_view const cleanArguments = _arguments.size() > 16*1024 ? _arguments.substr(0, _arguments.find_first_of('\"')) : _arguments;
+
 	static regex const argsRegex = regex(
 		R"~~(^(-1|\d+):(-1|\d+):(-1|\d+)(?:\s+|$))~~"  // index and location, e.g.: 1:234:-1
 		R"~~(("(?:[^"\\]|\\.)*"?)?)~~",                // optional code snippet, e.g.: "string memory s = \"abc\";..."
 		regex_constants::ECMAScript | regex_constants::optimize
 	);
 	match_results<string_view::const_iterator> match;
-	if (!regex_search(_arguments.cbegin(), _arguments.cend(), match, argsRegex))
+	if (!regex_search(cleanArguments.cbegin(), cleanArguments.cend(), match, argsRegex))
 	{
 		m_errorReporter.syntaxError(
 			8387_error,
@@ -208,7 +211,7 @@ optional<pair<string_view, SourceLocation>> Parser::parseSrcComment(
 	}
 
 	solAssert(match.size() == 5, "");
-	string_view tail = _arguments.substr(static_cast<size_t>(match.position() + match.length()));
+	string_view tail = cleanArguments.substr(static_cast<size_t>(match.position() + match.length()));
 
 	if (match[4].matched && (
 		!boost::algorithm::ends_with(match[4].str(), "\"") ||
