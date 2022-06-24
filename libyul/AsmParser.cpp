@@ -192,13 +192,25 @@ optional<pair<string_view, SourceLocation>> Parser::parseSrcComment(
 )
 {
 	// filter out debug info that may appear after location and cause segfaults
-	string_view const cleanArguments = _arguments.size() > 16*1024 ? _arguments.substr(0, _arguments.find_first_of('\"')) : _arguments;
-
-	static regex const argsRegex = regex(
+	//string_view const cleanArguments = _arguments.size() > 16*1024 ? _arguments.substr(0, _arguments.find_first_of('\"')) : _arguments;
+/*	static regex const argsRegex = regex(
 		R"~~(^(-1|\d+):(-1|\d+):(-1|\d+)(?:\s+|$))~~"  // index and location, e.g.: 1:234:-1
 		R"~~(("(?:[^"\\]|\\.)*"?)?)~~",                // optional code snippet, e.g.: "string memory s = \"abc\";..."
 		regex_constants::ECMAScript | regex_constants::optimize
+	);*/
+
+	string_view const cleanArguments = _arguments;
+
+	static regex const argsRegex = regex(
+		R"~~(^(-1|\d+):(-1|\d+):(-1|\d+)(?:\s+|$))~~",  // index and location, e.g.: 1:234:-1
+		regex_constants::ECMAScript | regex_constants::optimize
 	);
+	static regex const codeSnippetRegex = regex(
+		R"~~(("(?:[^"\\]|\\.)*"?)?)~~",                // optional code snippet, e.g.: "string memory s = \"abc\";..."
+		regex_constants::ECMAScript | regex_constants::optimize
+	);
+
+
 	match_results<string_view::const_iterator> match;
 	if (!regex_search(cleanArguments.cbegin(), cleanArguments.cend(), match, argsRegex))
 	{
@@ -210,10 +222,30 @@ optional<pair<string_view, SourceLocation>> Parser::parseSrcComment(
 		return nullopt;
 	}
 
-	solAssert(match.size() == 5, "");
+	solAssert(match.size() == 4, "");
 	string_view tail = cleanArguments.substr(static_cast<size_t>(match.position() + match.length()));
 
-	if (match[4].matched && (
+
+	match_results<string_view::const_iterator> snippetMatch;
+	regex_search(cleanArguments.cbegin(), cleanArguments.cend(), snippetMatch, codeSnippetRegex);
+
+	if (!snippetMatch.empty())
+	{
+		if (snippetMatch[1].matched && (
+			!boost::algorithm::ends_with(snippetMatch[1].str(), "\"") ||
+			boost::algorithm::ends_with(snippetMatch[1].str(), "\\\"")
+		))
+		{
+			m_errorReporter.syntaxError(
+				1544_error,
+				_commentLocation,
+				"Invalid code snippet in source location mapping. Quote is not terminated."
+			);
+			return {{tail, SourceLocation{}}};
+		}
+	}
+
+	/*if (match[4].matched && (
 		!boost::algorithm::ends_with(match[4].str(), "\"") ||
 		boost::algorithm::ends_with(match[4].str(), "\\\"")
 	))
@@ -224,7 +256,7 @@ optional<pair<string_view, SourceLocation>> Parser::parseSrcComment(
 			"Invalid code snippet in source location mapping. Quote is not terminated."
 		);
 		return {{tail, SourceLocation{}}};
-	}
+	}*/
 
 	optional<int> const sourceIndex = toInt(match[1].str());
 	optional<int> const start = toInt(match[2].str());
