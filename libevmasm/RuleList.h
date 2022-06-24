@@ -694,99 +694,99 @@ std::vector<SimplificationRule<Pattern>> simplificationRuleListPart8(
 		{
 			// (X-A)+B -> X-(A-B)
 			Builtins::ADD(Builtins::SUB(X, A), B),
-				 [=]() -> Pattern { return Builtins::SUB(X, A.d() - B.d()); }
+			[=]() -> Pattern { return Builtins::SUB(X, A.d() - B.d()); }
 		}, {
 			// (X-A)+Y -> (X+Y)-A
 			Builtins::ADD(Builtins::SUB(X, A), Y),
-				 [=]() -> Pattern { return Builtins::SUB(Builtins::ADD(X, Y), A); }
+			[=]() -> Pattern { return Builtins::SUB(Builtins::ADD(X, Y), A); }
 		}, {
 			// B+(X-A) -> X+(B-A)
 			Builtins::ADD(B, Builtins::SUB(X, A)),
-				 [=]() -> Pattern { return Builtins::ADD(X, B.d() - A.d()); }
+			[=]() -> Pattern { return Builtins::ADD(X, B.d() - A.d()); }
 		}, {
 			// Y+(X-A) -> (Y+X)-A
 			Builtins::ADD(Y, Builtins::SUB(X, A)),
-				 [=]() -> Pattern { return Builtins::SUB(Builtins::ADD(Y, X), A); }
+			[=]() -> Pattern { return Builtins::SUB(Builtins::ADD(Y, X), A); }
 		}, {
 			// (A-X)+B -> (A+B)-X
 			Builtins::ADD(Builtins::SUB(A, X), B),
-				 [=]() -> Pattern { return Builtins::SUB(A.d() + B.d(), X); }
+			[=]() -> Pattern { return Builtins::SUB(A.d() + B.d(), X); }
 		}, {
 			// (A-X)+Y -> (Y-X)+A
 			Builtins::ADD(Builtins::SUB(A, X), Y),
-				 [=]() -> Pattern { return Builtins::ADD(Builtins::SUB(Y, X), A); }
+			[=]() -> Pattern { return Builtins::ADD(Builtins::SUB(Y, X), A); }
 		}, {
 			// B+(A-X) -> (B+A)-X
 			Builtins::ADD(B, Builtins::SUB(A, X)),
-				 [=]() -> Pattern { return Builtins::SUB(B.d() + A.d(), X); }
+			[=]() -> Pattern { return Builtins::SUB(B.d() + A.d(), X); }
 		}, {
 			// Y+(A-X) -> (Y-X)+A
 			Builtins::ADD(Y, Builtins::SUB(A, X)),
-				 [=]() -> Pattern { return Builtins::ADD(Builtins::SUB(Y, X), A); }
+			[=]() -> Pattern { return Builtins::ADD(Builtins::SUB(Y, X), A); }
 		}, {
 			// (X+A)-B -> X+(A-B)
 			Builtins::SUB(Builtins::ADD(X, A), B),
-				 [=]() -> Pattern { return Builtins::ADD(X, A.d() - B.d()); }
+			[=]() -> Pattern { return Builtins::ADD(X, A.d() - B.d()); }
 		}, {
 			// (X+A)-Y -> (X-Y)+A
 			Builtins::SUB(Builtins::ADD(X, A), Y),
-				 [=]() -> Pattern { return Builtins::ADD(Builtins::SUB(X, Y), A); }
+			[=]() -> Pattern { return Builtins::ADD(Builtins::SUB(X, Y), A); }
 		}, {
 			// B-(X+A) -> (B-A)-X
 			Builtins::SUB(B, Builtins::ADD(X, A)),
-				 [=]() -> Pattern { return Builtins::SUB(B.d() - A.d(), X); }
+			[=]() -> Pattern { return Builtins::SUB(B.d() - A.d(), X); }
 		}, {
 			// Y-(X+A) -> (Y-X)-A
 			Builtins::SUB(Y, Builtins::ADD(X, A)),
-				 [=]() -> Pattern { return Builtins::SUB(Builtins::SUB(Y, X), A); }
+			[=]() -> Pattern { return Builtins::SUB(Builtins::SUB(Y, X), A); }
 		}, {
 			// (A+X)-B -> X+(A-B)
 			Builtins::SUB(Builtins::ADD(A, X), B),
-				 [=]() -> Pattern { return Builtins::ADD(X, A.d() - B.d()); }
+			[=]() -> Pattern { return Builtins::ADD(X, A.d() - B.d()); }
 		}, {
 			// (A+X)-Y -> (X-Y)+A
 			Builtins::SUB(Builtins::ADD(A, X), Y),
-				 [=]() -> Pattern { return Builtins::ADD(Builtins::SUB(X, Y), A); }
+			[=]() -> Pattern { return Builtins::ADD(Builtins::SUB(X, Y), A); }
 		}, {
 			// B-(A+X) -> (B-A)-X
 			Builtins::SUB(B, Builtins::ADD(A, X)),
-				 [=]() -> Pattern { return Builtins::SUB(B.d() - A.d(), X); }
+			[=]() -> Pattern { return Builtins::SUB(B.d() - A.d(), X); }
 		}, {
 			// Y-(A+X) -> (Y-X)-A
 			Builtins::SUB(Y, Builtins::ADD(A, X)),
-				 [=]() -> Pattern { return Builtins::SUB(Builtins::SUB(Y, X), A); }
+			[=]() -> Pattern { return Builtins::SUB(Builtins::SUB(Y, X), A); }
 		}, {
 			// (X-A)-B -> X-(A+B)
 			Builtins::SUB(Builtins::SUB(X, A), B),
-				 [=]() -> Pattern { return Builtins::SUB(X, A.d() + B.d()); }
+			[=]() -> Pattern { return Builtins::SUB(X, A.d() + B.d()); }
 		}, {
 			// (X-A)-Y -> (X-Y)-A
 			Builtins::SUB(Builtins::SUB(X, A), Y),
-				 [=]() -> Pattern { return Builtins::SUB(Builtins::SUB(X, Y), A); }
+			[=]() -> Pattern { return Builtins::SUB(Builtins::SUB(X, Y), A); }
 		}, {
 			// B-(X-A) -> (B+A)-X
 			Builtins::SUB(B, Builtins::SUB(X, A)),
-				 [=]() -> Pattern { return Builtins::SUB(B.d() + A.d(), X); }
+			[=]() -> Pattern { return Builtins::SUB(B.d() + A.d(), X); }
 		}, {
 			// Y-(X-A) -> (Y-X)+A
 			Builtins::SUB(Y, Builtins::SUB(X, A)),
-				 [=]() -> Pattern { return Builtins::ADD(Builtins::SUB(Y, X), A); }
+			[=]() -> Pattern { return Builtins::ADD(Builtins::SUB(Y, X), A); }
 		}, {
 			// (A-X)-B -> (A-B)-X
 			Builtins::SUB(Builtins::SUB(A, X), B),
-				 [=]() -> Pattern { return Builtins::SUB(A.d() - B.d(), X); }
+			[=]() -> Pattern { return Builtins::SUB(A.d() - B.d(), X); }
 		}, {
 			// (A-X)-Y -> A-(X+Y)
 			Builtins::SUB(Builtins::SUB(A, X), Y),
-				 [=]() -> Pattern { return Builtins::SUB(A, Builtins::ADD(X, Y)); }
+			[=]() -> Pattern { return Builtins::SUB(A, Builtins::ADD(X, Y)); }
 		}, {
 			// B-(A-X) -> X+(B-A)
 			Builtins::SUB(B, Builtins::SUB(A, X)),
-				 [=]() -> Pattern { return Builtins::ADD(X, B.d() - A.d()); }
+			[=]() -> Pattern { return Builtins::ADD(X, B.d() - A.d()); }
 		}, {
 			// Y-(A-X) -> (Y+X)-A
 			Builtins::SUB(Y, Builtins::SUB(A, X)),
-				 [=]() -> Pattern { return Builtins::SUB(Builtins::ADD(Y, X), A); }
+			[=]() -> Pattern { return Builtins::SUB(Builtins::ADD(Y, X), A); }
 		}
 	};
 	return rules;
