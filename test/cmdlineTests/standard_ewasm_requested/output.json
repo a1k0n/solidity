@@ -40,14 +40,12 @@
 (func $u256_to_i32_333
     (result i32)
     (local $v i32)
-    (local $_1 i64)
     (block $label__1
-        (local.set $_1 (i64.const 0))
-        (if (i64.ne (local.get $_1) (i64.or (i64.or (local.get $_1) (local.get $_1)) (local.get $_1))) (then
+        (if (i64.ne (i64.const 0) (i64.or (i64.or (i64.const 0) (i64.const 0)) (i64.const 0))) (then
             (unreachable)))
-        (if (i64.ne (local.get $_1) (i64.shr_u (local.get $_1) (i64.const 32))) (then
+        (if (i64.ne (i64.const 0) (i64.shr_u (i64.const 0) (i64.const 32))) (then
             (unreachable)))
-        (local.set $v (i32.wrap_i64 (local.get $_1)))
+        (local.set $v (i32.wrap_i64 (i64.const 0)))
 
     )
     (local.get $v)

@@ -18,107 +18,101 @@ object "C_59" {
             {
                 /// @src 0:346:625  "contract C {..."
                 let _1 := memoryguard(0x80)
-                let _2 := 4
-                if iszero(lt(calldatasize(), _2))
+                if iszero(lt(calldatasize(), 4))
                 {
-                    let _3 := 0
-                    if eq(0xf8eddcc6, shr(224, calldataload(_3)))
+                    if eq(0xf8eddcc6, shr(224, calldataload(0)))
                     {
-                        if callvalue() { revert(_3, _3) }
-                        let _4 := 32
-                        if slt(sub(calldatasize(), _2), _4) { revert(_3, _3) }
-                        let offset := calldataload(_2)
-                        let _5 := 0xffffffffffffffff
-                        if gt(offset, _5) { revert(_3, _3) }
-                        if iszero(slt(add(offset, 35), calldatasize())) { revert(_3, _3) }
-                        let _6 := calldataload(add(_2, offset))
-                        let _7 := 36
-                        if gt(_6, _5)
+                        if callvalue() { revert(0, 0) }
+                        if slt(sub(calldatasize(), 4), 32) { revert(0, 0) }
+                        let offset := calldataload(4)
+                        let _2 := 0xffffffffffffffff
+                        if gt(offset, _2) { revert(0, 0) }
+                        if iszero(slt(add(offset, 35), calldatasize())) { revert(0, 0) }
+                        let _3 := calldataload(add(4, offset))
+                        if gt(_3, _2)
                         {
-                            mstore(_3, shl(224, 0x4e487b71))
-                            mstore(_2, 0x41)
-                            revert(_3, _7)
+                            mstore(0, shl(224, 0x4e487b71))
+                            mstore(4, 0x41)
+                            revert(0, 36)
                         }
-                        let _8 := shl(5, _6)
-                        let _9 := not(31)
-                        let newFreePtr := add(_1, and(add(_8, 63), _9))
-                        if or(gt(newFreePtr, _5), lt(newFreePtr, _1))
+                        let _4 := shl(5, _3)
+                        let _5 := not(31)
+                        let newFreePtr := add(_1, and(add(_4, 63), _5))
+                        if or(gt(newFreePtr, _2), lt(newFreePtr, _1))
                         {
-                            mstore(_3, shl(224, 0x4e487b71))
-                            mstore(_2, 0x41)
-                            revert(_3, _7)
+                            mstore(0, shl(224, 0x4e487b71))
+                            mstore(4, 0x41)
+                            revert(0, 36)
                         }
-                        let _10 := 64
-                        mstore(_10, newFreePtr)
+                        mstore(64, newFreePtr)
                         let dst := _1
-                        mstore(_1, _6)
-                        dst := add(_1, _4)
+                        mstore(_1, _3)
+                        dst := add(_1, 32)
                         let dst_1 := dst
-                        let srcEnd := add(add(offset, _8), _7)
-                        if gt(srcEnd, calldatasize()) { revert(_3, _3) }
-                        let src := add(offset, _7)
-                        for { } lt(src, srcEnd) { src := add(src, _4) }
+                        let srcEnd := add(add(offset, _4), 36)
+                        if gt(srcEnd, calldatasize()) { revert(0, 0) }
+                        let src := add(offset, 36)
+                        for { } lt(src, srcEnd) { src := add(src, 32) }
                         {
-                            if slt(sub(calldatasize(), src), _4) { revert(_3, _3) }
-                            let memPtr := mload(_10)
-                            let newFreePtr_1 := add(memPtr, _4)
-                            if or(gt(newFreePtr_1, _5), lt(newFreePtr_1, memPtr))
+                            if slt(sub(calldatasize(), src), 32) { revert(0, 0) }
+                            let memPtr := mload(64)
+                            let newFreePtr_1 := add(memPtr, 32)
+                            if or(gt(newFreePtr_1, _2), lt(newFreePtr_1, memPtr))
                             {
-                                mstore(_3, shl(224, 0x4e487b71))
-                                mstore(_2, 0x41)
-                                revert(_3, _7)
+                                mstore(0, shl(224, 0x4e487b71))
+                                mstore(4, 0x41)
+                                revert(0, 36)
                             }
-                            mstore(_10, newFreePtr_1)
+                            mstore(64, newFreePtr_1)
                             mstore(memPtr, calldataload(src))
                             mstore(dst, memPtr)
-                            dst := add(dst, _4)
+                            dst := add(dst, 32)
                         }
                         if iszero(mload(_1))
                         {
-                            mstore(_3, shl(224, 0x4e487b71))
-                            mstore(_2, 0x32)
-                            revert(_3, _7)
+                            mstore(0, shl(224, 0x4e487b71))
+                            mstore(4, 0x32)
+                            revert(0, 36)
                         }
-                        sstore(_3, mload(/** @src 0:469:474  "_s[0]" */ mload(dst_1)))
+                        sstore(0, mload(/** @src 0:469:474  "_s[0]" */ mload(dst_1)))
                         /// @src 0:346:625  "contract C {..."
                         if iszero(lt(/** @src 0:492:493  "1" */ 0x01, /** @src 0:346:625  "contract C {..." */ mload(_1)))
                         {
-                            mstore(_3, shl(224, 0x4e487b71))
-                            mstore(_2, 0x32)
-                            revert(_3, _7)
+                            mstore(0, shl(224, 0x4e487b71))
+                            mstore(4, 0x32)
+                            revert(0, 36)
                         }
-                        let _11 := mload(/** @src 0:489:494  "_s[1]" */ mload(/** @src 0:346:625  "contract C {..." */ add(_1, _10)))
-                        sstore(0x02, _11)
-                        let memPtr_1 := mload(_10)
+                        let _6 := mload(/** @src 0:489:494  "_s[1]" */ mload(/** @src 0:346:625  "contract C {..." */ add(_1, 64)))
+                        sstore(0x02, _6)
+                        let memPtr_1 := mload(64)
                         let newFreePtr_2 := add(memPtr_1, 160)
-                        if or(gt(newFreePtr_2, _5), lt(newFreePtr_2, memPtr_1))
+                        if or(gt(newFreePtr_2, _2), lt(newFreePtr_2, memPtr_1))
                         {
-                            mstore(_3, shl(224, 0x4e487b71))
-                            mstore(_2, 0x41)
-                            revert(_3, _7)
+                            mstore(0, shl(224, 0x4e487b71))
+                            mstore(4, 0x41)
+                            revert(0, 36)
                         }
-                        mstore(_10, newFreePtr_2)
+                        mstore(64, newFreePtr_2)
                         mstore(memPtr_1, 100)
-                        mstore(add(memPtr_1, _4), "longstringlongstringlongstringlo")
-                        mstore(add(memPtr_1, _10), "ngstringlongstringlongstringlong")
-                        let _12 := 96
-                        mstore(add(memPtr_1, _12), "stringlongstringlongstringlongst")
+                        mstore(add(memPtr_1, 32), "longstringlongstringlongstringlo")
+                        mstore(add(memPtr_1, 64), "ngstringlongstringlongstringlong")
+                        mstore(add(memPtr_1, 96), "stringlongstringlongstringlongst")
                         mstore(add(memPtr_1, 128), "ring")
-                        let memPos := mload(_10)
-                        mstore(memPos, _11)
-                        mstore(add(memPos, _4), _10)
+                        let memPos := mload(64)
+                        mstore(memPos, _6)
+                        mstore(add(memPos, 32), 64)
                         let length := mload(memPtr_1)
-                        mstore(add(memPos, _10), length)
-                        let i := _3
-                        for { } lt(i, length) { i := add(i, _4) }
+                        mstore(add(memPos, 64), length)
+                        let i := 0
+                        for { } lt(i, length) { i := add(i, 32) }
                         {
-                            mstore(add(add(memPos, i), _12), mload(add(add(memPtr_1, i), _4)))
+                            mstore(add(add(memPos, i), 96), mload(add(add(memPtr_1, i), 32)))
                         }
                         if gt(i, length)
                         {
-                            mstore(add(add(memPos, length), _12), _3)
+                            mstore(add(add(memPos, length), 96), 0)
                         }
-                        return(memPos, add(sub(add(memPos, and(add(length, 31), _9)), memPos), _12))
+                        return(memPos, add(sub(add(memPos, and(add(length, 31), _5)), memPos), 96))
                     }
                 }
                 revert(0, 0)
