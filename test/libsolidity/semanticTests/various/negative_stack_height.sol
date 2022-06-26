@@ -66,4 +66,4 @@ contract C {
 // ----
 // constructor() ->
 // gas legacy: 588138
-// gas legacyOptimized: 349636
+// gas legacyOptimized: 348100

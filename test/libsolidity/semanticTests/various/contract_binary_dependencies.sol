@@ -20,4 +20,4 @@ contract C {
 // compileToEwasm: also
 // ----
 // constructor() ->
-// gas irOptimized: 100631
+// gas irOptimized: 100079

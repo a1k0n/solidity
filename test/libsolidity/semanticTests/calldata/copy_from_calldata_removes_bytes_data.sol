@@ -10,9 +10,9 @@ contract c {
 // compileToEwasm: false
 // ----
 // (): 1, 2, 3, 4, 5 ->
-// gas irOptimized: 155164
+// gas irOptimized: 155131
 // gas legacy: 155483
-// gas legacyOptimized: 155303
+// gas legacyOptimized: 155302
 // checkIfDataIsEmpty() -> false
 // sendMessage() -> true, 0x40, 0
 // checkIfDataIsEmpty() -> true

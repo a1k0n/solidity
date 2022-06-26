@@ -17,7 +17,7 @@ contract C {
 // EVMVersion: >=byzantium
 // ----
 // constructor(), 20 wei
-// gas irOptimized: 190995
+// gas irOptimized: 179973
 // gas legacy: 294335
 // gas legacyOptimized: 174483
 // f(uint256): 20 -> 1370859564726510389319704988634906228201275401179
@@ -25,7 +25,7 @@ contract C {
 // f(uint256): 20 -> FAILURE
 // x() -> 1
 // stack(uint256): 1023 -> FAILURE
-// gas irOptimized: 260987
+// gas irOptimized: 251559
 // gas legacy: 483942
 // gas legacyOptimized: 298807
 // x() -> 1

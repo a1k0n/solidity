@@ -17,7 +17,7 @@ contract D {
 
 // ----
 // constructor(), 27 wei ->
-// gas irOptimized: 170195
+// gas irOptimized: 170975
 // gas legacy: 222977
 // gas legacyOptimized: 169779
 // f() -> 27

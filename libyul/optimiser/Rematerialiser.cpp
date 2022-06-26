@@ -65,8 +65,7 @@ void Rematerialiser::visit(Expression& _e)
 				(
 					!m_onlySelectedVariables && (
 						(refs <= 1 && value->loopDepth == m_loopDepth) ||
-						cost == 0 ||
-						(refs <= 5 && cost <= 1 && m_loopDepth == 0)
+						(cost <= 1)
 					)
 				) || m_varsToAlwaysRematerialize.count(name)
 			)

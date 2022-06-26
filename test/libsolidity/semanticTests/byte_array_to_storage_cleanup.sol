@@ -28,9 +28,9 @@ contract C {
 // compileViaYul: also
 // ----
 // constructor() ->
-// gas irOptimized: 518743
+// gas irOptimized: 507378
 // gas legacy: 731840
-// gas legacyOptimized: 494859
+// gas legacyOptimized: 495489
 // h() -> 0x20, 0x40, 0x00, 0
 // ~ emit ev(uint256[],uint256): 0x40, 0x21, 0x02, 0x00, 0x00
 // g() -> 0x20, 0x40, 0, 0x00

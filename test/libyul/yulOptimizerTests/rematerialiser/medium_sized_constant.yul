@@ -20,7 +20,7 @@
 //     mstore(2, 2)
 //     mstore(add(2, 2), 2)
 //     let a := 1
-//     mstore(a, a)
-//     mstore(add(a, a), a)
-//     mstore(a, mload(a))
+//     mstore(1, 1)
+//     mstore(add(1, 1), 1)
+//     mstore(1, mload(1))
 // }

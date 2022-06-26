@@ -20,6 +20,6 @@ contract C {
 // f(uint256[][1]): 32, 32, 0 -> true
 // f(uint256[][1]): 32, 32, 1, 42 -> true
 // f(uint256[][1]): 32, 32, 8, 421, 422, 423, 424, 425, 426, 427, 428 -> true
-// gas irOptimized: 128083
+// gas irOptimized: 127875
 // gas legacy: 140672
-// gas legacyOptimized: 120554
+// gas legacyOptimized: 120570

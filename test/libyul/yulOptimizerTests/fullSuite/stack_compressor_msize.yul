@@ -40,21 +40,18 @@
 //
 // {
 //     {
-//         let _1 := 1
-//         let _2 := 15
-//         let _3 := 10
-//         let _4 := gt(not(gcd(_3, _2)), _1)
-//         let _5 := gcd(_3, _2)
-//         let _6 := lt(or(_1, sub(gcd(_3, _2), _1)), _1)
-//         let _7 := gcd(_3, _2)
-//         let _8 := gcd(_3, _2)
-//         pop(keccak256(gcd(_3, _2), or(gt(not(gcd(_3, _2)), _1), _1)))
-//         mstore(lt(or(gt(_1, or(or(gt(or(or(or(gt(or(gt(not(0), _8), _1), _7), _6), _5), _1), _1), _4), _1)), _1), _1), _1)
-//         sstore(not(gcd(_3, _2)), _1)
-//         sstore(2, _1)
-//         extcodecopy(_1, msize(), _1, _1)
+//         let _1 := gt(not(gcd(10, 15)), 1)
+//         let _2 := gcd(10, 15)
+//         let _3 := lt(or(1, sub(gcd(10, 15), 1)), 1)
+//         let _4 := gcd(10, 15)
+//         let _5 := gcd(10, 15)
+//         pop(keccak256(gcd(10, 15), or(gt(not(gcd(10, 15)), 1), 1)))
+//         mstore(lt(or(gt(1, or(or(gt(or(or(or(gt(or(gt(not(0), _5), 1), _4), _3), _2), 1), 1), _1), 1)), 1), 1), 1)
+//         sstore(not(gcd(10, 15)), 1)
+//         sstore(2, 1)
+//         extcodecopy(1, msize(), 1, 1)
 //         sstore(0, 0)
-//         sstore(3, _1)
+//         sstore(3, 1)
 //     }
 //     function gcd(_a, _b) -> out
 //     {

@@ -25,13 +25,12 @@
 //     function f()
 //     {
 //         let b := 10
-//         let _1 := 0
-//         let a := calldataload(_1)
-//         let _2 := iszero(a)
+//         let a := calldataload(0)
+//         let _1 := iszero(a)
 //         for { } iszero(b) { b := sub(b, 1) }
 //         {
-//             mstore(a, _1)
-//             if _2 { leave }
+//             mstore(a, 0)
+//             if _1 { leave }
 //         }
 //     }
 // }

@@ -15,5 +15,5 @@ contract B is A {
 // compileViaYul: true
 // ----
 // constructor() ->
-// gas irOptimized: 121125
+// gas irOptimized: 120645
 // y() -> 42
